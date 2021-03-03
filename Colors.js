@@ -1,4 +1,4 @@
-import Game from '../lib/Game.js'
+import Game from './lib/Game.js'
 
 const Directions = {
   LEFT: 0,
