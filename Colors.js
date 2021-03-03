@@ -12,7 +12,13 @@ class Colors extends Game {
     this.state = {
       x: 0,
       direction: Directions.RIGHT,
-      speed: 5
+      speed: 5,
+      image: new Image()
+    }
+    this.state.image.src = 'https://raw.githubusercontent.com/ChocolateLoverRaj/canvideo/better/package/icons/icon.png'
+
+    this.renderState = {
+      rotation: 0
     }
 
     window.onclick = () => {
@@ -41,7 +47,10 @@ class Colors extends Game {
   }
 
   render () {
+    this.renderState.rotation += 1
+
     super.render()
+
     this.ctx.clearRect(0, 0, 640, 360)
 
     this.ctx.fillStyle = 'red'
@@ -52,6 +61,10 @@ class Colors extends Game {
 
     this.ctx.fillStyle = 'blue'
     this.ctx.fillRect(this.state.x, 160, 320, 160)
+    this.ctx.translate(this.state.x + 80, 240)
+    this.ctx.rotate(this.renderState.rotation)
+    this.ctx.translate(-(this.state.x + 80), -240)
+    this.ctx.drawImage(this.state.image, this.state.x, 160, 160, 160)
   }
 }
 
